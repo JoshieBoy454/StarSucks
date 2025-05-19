@@ -7,38 +7,44 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firstproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imgSb1.setOnClickListener()
+
+        binding.imageView.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Soy latte", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Soy latte", Toast.LENGTH_SHORT).show()
         }
-        binding.imgSb2.setOnClickListener()
+        binding.imageView2.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Choco Frapp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Choco Frapp", Toast.LENGTH_SHORT).show()
         }
-        binding.imgSb3.setOnClickListener()
+        binding.imageView3.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Bottled Americano", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Bottled Americano", Toast.LENGTH_SHORT).show()
         }
-        binding.imgSb4.setOnClickListener()
+        binding.imageView4.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Rainbow Latte", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Rainbow Latte", Toast.LENGTH_SHORT).show()
         }
-        binding.imgSb5.setOnClickListener()
+        binding.
+            imageView5.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Caremel Frapp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Caremel Frapp", Toast.LENGTH_SHORT).show()
         }
-        binding.imgSb6.setOnClickListener()
+        binding.imageView6.setOnClickListener()
         {
-            Toast.makeText(context: this, text:"Black Forest Frapp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Black Forest Frapp", Toast.LENGTH_SHORT).show()
         }
 
 
