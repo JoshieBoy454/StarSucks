@@ -9,11 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firstproject.databinding.ActivityMainBinding
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private var order = Order()
+    private lateinit var database: FirebaseDatabase
+     var order = Order()
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var orderDAO: OrderDAO
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        database = FirebaseDatabase.getInstance()
 
         binding.imageView.setOnClickListener(this)
         binding.imageView2.setOnClickListener(this)
