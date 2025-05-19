@@ -1,6 +1,7 @@
 package com.example.firstproject
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -9,7 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.firstproject.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private var order = Order()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -21,31 +23,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.imageView.setOnClickListener()
-        {
-            Toast.makeText(this, "Soy latte", Toast.LENGTH_SHORT).show()
-        }
-        binding.imageView2.setOnClickListener()
-        {
-            Toast.makeText(this, "Choco Frapp", Toast.LENGTH_SHORT).show()
-        }
-        binding.imageView3.setOnClickListener()
-        {
-            Toast.makeText(this, "Bottled Americano", Toast.LENGTH_SHORT).show()
-        }
-        binding.imageView4.setOnClickListener()
-        {
-            Toast.makeText(this, "Rainbow Latte", Toast.LENGTH_SHORT).show()
-        }
-        binding.
-            imageView5.setOnClickListener()
-        {
-            Toast.makeText(this, "Caremel Frapp", Toast.LENGTH_SHORT).show()
-        }
-        binding.imageView6.setOnClickListener()
-        {
-            Toast.makeText(this, "Black Forest Frapp", Toast.LENGTH_SHORT).show()
-        }
+        binding.imageView.setOnClickListener(this)
+        binding.imageView2.setOnClickListener(this)
+        binding.imageView3.setOnClickListener(this)
+        binding.imageView4.setOnClickListener(this)
+        binding.imageView5.setOnClickListener(this)
+        binding.imageView6.setOnClickListener(this)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -53,5 +36,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.imageView -> order.productName = "Soy Latte"
+            R.id.imageView2 -> order.productName = "Chocce Frapp"
+            R.id.imageView3 -> order.productName = "Bottled Americano"
+            R.id.imageView4 -> order.productName = "Rainbow Frapp"
+            R.id.imageView5 -> order.productName = "Charamel Frapp"
+            R.id.imageView6 -> order.productName = "Black Forest Frapp"
+        }
+        Toast.makeText(this@MainActivity,"MMM" + order.productName, Toast.LENGTH_SHORT).show()
+        IntentHelper().openIntent(applicationContext, order.productName, OrderDetailsActivity::class.java)
     }
 }
